@@ -1,0 +1,58 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 23/06/2012 10:38:16 PM by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+	<class name="pe.com.peruInka.core.domain.UserSystem" table="userSystem">
+		<id name="id" type="java.lang.Long">
+			<column name="id" />
+			<generator class="identity" />
+		</id>
+<!-- 		<version name="version" type="java.lang.Integer"> -->
+<!-- 			<column name="version" /> -->
+<!-- 		</version> -->
+
+		<property name="userName" type="string">
+			<column name="userName" length="20" />
+		</property>
+		<property name="userPassword" type="string">
+			<column name="userPassword" length="20" />
+		</property>
+		<property name="dateIni" type="timestamp">
+			<column name="dateIni" />
+		</property>
+		<property name="dateEnd" type="timestamp">
+			<column name="dateEnd" />
+		</property>
+<!-- 		<property name="statusUser" type="string"> -->
+<!-- 			<column name="status" length="25" /> -->
+<!-- 		</property> -->
+
+        <many-to-one name="statusUser" class="pe.com.peruInka.core.domain.StatusUser" lazy="false" fetch="select">
+            <column name="status" />
+        </many-to-one>		
+
+        <many-to-one name="person" class="pe.com.peruInka.core.domain.Person" lazy="false" fetch="select" 
+        					cascade="all">
+            <column name="personId" />
+        </many-to-one>		
+
+
+
+
+
+
+
+
+
+<!-- 		<property name="personId" type="string"> -->
+<!-- 			<column name="personId" length="25" /> -->
+<!-- 		</property> -->
+
+<!--         <many-to-one name="typeDocument" class="pe.com.peruInka.core.domain.TypeDocument" lazy="false" fetch="select"> -->
+<!--             <column name="typeDocument" /> -->
+<!--         </many-to-one>		 -->
+<!-- typeDocument -->
+
+	</class>
+</hibernate-mapping>

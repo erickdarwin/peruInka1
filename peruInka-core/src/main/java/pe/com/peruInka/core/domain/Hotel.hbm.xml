@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="pe.com.peruInka.core.domain.Hotel" table="hotel">
+		<id name="id" type="java.lang.Long">
+			<column name="id" />
+			<generator class="identity" />
+		</id>
+
+		<property name="businessName" type="string">
+			<column name="businessName" length="50"></column>
+		</property>
+
+		<property name="ruc" type="string">
+			<column name="ruc" length="11"></column>
+		</property>
+
+		<property name="address" type="string">
+			<column name="address" length="80"></column>
+		</property>
+
+		<property name="phone" type="string">
+			<column name="phone" length="25"></column>
+		</property>
+
+		<property name="root" type="string">
+			<column name="root" length="15"></column>
+		</property>
+
+		<many-to-one name="statusHotel"
+			class="pe.com.peruInka.core.domain.StatusHotel" lazy="false" fetch="select">
+			<column name="status" />
+		</many-to-one>
+
+		<many-to-one name="person" class="pe.com.peruInka.core.domain.Person"
+			lazy="false" fetch="select">
+			<column name="personId"></column>
+		</many-to-one>
+
+	</class>
+</hibernate-mapping>

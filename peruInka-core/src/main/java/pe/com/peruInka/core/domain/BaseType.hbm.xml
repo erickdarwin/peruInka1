@@ -1,0 +1,34 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping>
+	<class name="pe.com.peruInka.core.domain.BaseType" table="basetype"
+	mutable="false">
+		<comment />
+		<id name="typeCode" type="string">
+			<column name="typeCode" length="20" />
+			<generator class="assigned" />
+		</id>
+		
+		<discriminator column="typeCategory" type="string" />
+		
+		<property name="description" type="string">
+			<column name="description" length="100"></column>
+		</property>
+		<property name="attribute1" type="string">
+			<column name="attribute1" length="20">
+				<comment />
+			</column>
+		</property>
+		<property name="orderBy" type="java.lang.Long">
+			<column name="orderBy"></column>
+		</property>
+		
+		<subclass name="pe.com.peruInka.core.domain.TypeDocument" discriminator-value="TYPE_DOCUMENT" />
+		<subclass name="pe.com.peruInka.core.domain.StatusPerson" discriminator-value="STATUS_PERSON" />
+		<subclass name="pe.com.peruInka.core.domain.StatusHotel" discriminator-value="STATUS_HOTEL" />
+		<subclass name="pe.com.peruInka.core.domain.StatusUser" discriminator-value="STATUS_USER" />
+		<subclass name="pe.com.peruInka.core.domain.StatusProduct" discriminator-value="STATUS_PRODUCT" />
+	</class>
+</hibernate-mapping>

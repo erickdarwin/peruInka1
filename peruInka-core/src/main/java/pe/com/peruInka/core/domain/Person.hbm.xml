@@ -1,0 +1,67 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 23/06/2012 10:38:16 PM by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+	<class name="pe.com.peruInka.core.domain.Person" table="person">
+		<id name="id" type="java.lang.Long">
+			<column name="id" />
+			<generator class="identity" />
+		</id>
+		<!-- <version name="version" type="java.lang.Integer"> -->
+		<!-- <column name="version" /> -->
+		<!-- </version> -->
+
+		<property name="name" type="string">
+			<column name="name" length="30" />
+		</property>
+		<property name="lastNameF" type="string">
+			<column name="lastNameF" length="25" />
+		</property>
+		<property name="lastNameM" type="string">
+			<column name="lastNameM" length="25" />
+		</property>
+		<!-- <property name="typeDocument" type="string"> -->
+		<!-- <column name="typeDocument" length="20" /> -->
+		<!-- </property> -->
+		<property name="numDocument" type="string">
+			<column name="numDocument" length="20" />
+		</property>
+		<property name="phone" type="string">
+			<column name="phone" length="25" />
+		</property>
+		<property name="address" type="string">
+			<column name="address" length="25" />
+		</property>
+
+		<many-to-one name="typeDocument"
+			class="pe.com.peruInka.core.domain.TypeDocument" lazy="false" fetch="select">
+			<column name="typeDocument" />
+		</many-to-one>
+		<!-- typeDocument -->
+
+		<!-- status -->
+		<many-to-one name="statusPerson"
+			class="pe.com.peruInka.core.domain.StatusPerson" lazy="false" fetch="select">
+			<column name="status" />
+		</many-to-one>
+
+
+
+		<!-- auditory -->
+
+		<property name="createdBy" type="string">
+			<column name="createdBy" length="20" />
+		</property>
+		<property name="dateCreated" type="timestamp">
+			<column name="dateCreated" length="19" />
+		</property>
+		<property name="dateLastUpdated" type="timestamp">
+			<column name="dateLastUpdated" length="19" />
+		</property>
+		<property name="lastUpdatedBy" type="string">
+			<column name="lastUpdatedBy" length="20" />
+		</property>
+
+	</class>
+</hibernate-mapping>
